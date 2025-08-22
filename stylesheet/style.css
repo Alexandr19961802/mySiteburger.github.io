@@ -5,6 +5,7 @@
   font-family: "Roboto", sans-serif;
 }
 
+
 header {
   position: absolute;
   z-index: 6;
@@ -12,11 +13,14 @@ header {
 }
 
 nav {
+  background-color: #000000b3;
   display: flex;
-  flex-direction: row;
+  position: fixed;
+  width: 100%;
   justify-content: space-around;
   align-items: center;
   padding-top: 1%;
+  padding-bottom: 1%;
 }
 
 .li {
@@ -25,9 +29,8 @@ nav {
 }
 
 .home {
-  opacity: 70%;
+  opacity: 0.7;
 }
-
 
 li {
   list-style: none;
@@ -35,13 +38,12 @@ li {
 
 a {
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  color: white;
 }
 
 nav .li a {
   position: relative;
   padding-bottom: 2px;
-
 }
 
 nav .li a::after {
@@ -49,12 +51,10 @@ nav .li a::after {
   position: absolute;
   bottom: 0;
   left: 0;
-
-
   width: 0;
   height: 2px;
-  background-color: rgb(253, 169, 0);
-  transition: ease-in-out 0.3s;
+  background-color: orange;
+  transition: width 0.3s ease-in-out;
 }
 
 nav .li a:hover::after {
@@ -72,46 +72,85 @@ nav .li a:hover::after {
   color: black;
 }
 
-.burger span {
-
-  height: 4px;
-  background-color: rgb(255, 255, 255);
-  width: 30px;
-  color: rgb(255, 255, 255);
-  margin-top: 0.3rem;
-
-}
-
 .burger {
   cursor: pointer;
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 30px;
+  gap: 6px;
+  z-index: 10001;
+  transition: all 0.3s ease-in-out;
 }
 
-@media(max-width:768px) {
+.burger span {
+  height: 3px;
+  background-color: white;
+  width: 30px;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.burger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.menu-mobile {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 9999;
+}
+
+.menu-mobile.open {
+  transform: translateX(0);
+}
+
+.menu-mobile ul {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+}
+
+.menu-mobile li {
+  margin: 1.5rem 0;
+}
+
+.menu-mobile a {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.menu-mobile a:hover {
+  color: orange;
+}
+
+@media (max-width: 768px) {
+  .li, .btn {
+    display: none;
+  }
+
   .burger {
     display: flex;
-    flex-direction: column;
-  }
-
-  nav li {
-    display: none;
-  }
-
-  .burger:active span:nth-child(1) {
-    transform: rotate(55deg);
-    transform: translate(5px 5px);
-
-  }
-
-  .burger:active span:nth-child(2) {
-    transform: rotate(135deg);
-    transform: translate(5px 5px);
-
-  }
-
-  .burger:active span:nth-child(3) {
-    display: none;
-
+    
   }
 }
 
@@ -414,7 +453,6 @@ nav .li a:hover::after {
 @media (max-width: 600px) {
   .btn3 {
     display: block;
-    /* на мобиле удобнее во всю ширину */
     width: 100%;
     text-align: center;
   }
@@ -469,8 +507,6 @@ nav .li a:hover::after {
     background: orange;
     border-radius: 4px;
     white-space: nowrap;
-    /* кнопка в одну строку */
-    /* не шире контейнера */
     width: 100%;
     text-align: center;
     align-items: center;
@@ -504,8 +540,6 @@ nav .li a:hover::after {
     background: orange;
     border-radius: 4px;
     white-space: nowrap;
-    /* кнопка в одну строку */
-    /* не шире контейнера */
     width: 100%;
     text-align: center;
     align-items: center;
@@ -522,14 +556,18 @@ nav .li a:hover::after {
   background-color: #0c0c0c;
   padding-bottom: 100px;
 }
-
+.Download a:hover{
+  background-color: rgb(230, 186, 106);
+  color: black;
+}
 .grid-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
 }
-
+.grid-container a:hover{background-color: rgb(230, 186, 106);
+color: black;}
 .card {
   width: 555px;
   height: 300px;
@@ -690,9 +728,10 @@ nav .li a:hover::after {
  padding-top: 10px;
 
 }
+
  .card,h2,p,span,a{
   position: relative;
-  z-index: 100;
+  z-index: 3;
 }
 .card:before {
   position: absolute;
@@ -747,7 +786,7 @@ nav .li a:hover::after {
 }
  .card,h2,p,span,a{
   position: relative;
-  z-index: 100;
+  z-index: 3;
 }
 .card:before {
   position: absolute;
@@ -815,6 +854,7 @@ padding-bottom: 140px;}
 align-items: center;}
 .fot img{padding-right: 7px;}
 footer .logo-footer{
+  padding-top:1.5rem;
   padding-bottom: 22px;
 }
 .text-foot p{padding-top: 14px;}
@@ -827,5 +867,4 @@ text-align: center;
 padding-inline: 0;} 
 }
 .text-foot{padding-top: 2rem;}
-
 .social-cont{padding-top: 2rem;}
