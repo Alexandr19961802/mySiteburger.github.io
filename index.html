@@ -28,12 +28,26 @@
       <ul>
         <li><a class="btn" href="#">ORDER NOW</a></li>
       </ul>
-      <div class="burger">
+      <div class="burger" id="burger">
         <span></span>
         <span></span>
         <span></span>
 
       </div>
+      <div class="menu-mobile" id="mobileMenu">
+       
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">PAGES</a></li>
+          <li><a href="#">OUR OFFER</a></li>
+          <li><a href="#">PRICING</a></li>
+          <li><a href="#">SHOP</a></li>
+          <li><a class="btn" href="#">ORDER NOW</a></li>
+        </ul>
+      </div>
+      
+
+
     </nav>
   </header>
   <main>
@@ -192,9 +206,30 @@
     </div>
   </footer>
   <script>
-
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuLinks = mobileMenu.querySelectorAll('a');
+  
+    function closeMenu() {
+      burger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.classList.remove('no-scroll');
+    }
+  
+    burger.addEventListener('click', () => {
+      const isOpen = burger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.classList.toggle('no-scroll', isOpen);
+    });
+  
+    menuLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
   </script>
+  
+  
+  
+  
 </body>
-
 
 </html>
